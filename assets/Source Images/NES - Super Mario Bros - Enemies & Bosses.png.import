@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0ava40oy1ppq"
-path="res://.godot/imported/Item_and_Brick_Blocks.png-5347b1b2221ddb23abb76b84af0de993.ctex"
+uid="uid://blgjce0dhn5bq"
+path="res://.godot/imported/NES - Super Mario Bros - Enemies & Bosses.png-cfacc9a7ff624aa73adf92d6fbe7c987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/Item_and_Brick_Blocks.png"
-dest_files=["res://.godot/imported/Item_and_Brick_Blocks.png-5347b1b2221ddb23abb76b84af0de993.ctex"]
+source_file="res://assets/Source Images/NES - Super Mario Bros - Enemies & Bosses.png"
+dest_files=["res://.godot/imported/NES - Super Mario Bros - Enemies & Bosses.png-cfacc9a7ff624aa73adf92d6fbe7c987.ctex"]
 
 [params]
 

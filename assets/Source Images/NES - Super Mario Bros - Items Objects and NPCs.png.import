@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ljhg3aw2l4rn"
-path="res://.godot/imported/tileset.png-ba4da33ace01a9471a56946f002fad40.ctex"
+uid="uid://ccealluggii2v"
+path="res://.godot/imported/NES - Super Mario Bros - Items Objects and NPCs.png-fa5d8c2865892815e3d4369ae498a1e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/tileset.png"
-dest_files=["res://.godot/imported/tileset.png-ba4da33ace01a9471a56946f002fad40.ctex"]
+source_file="res://assets/Source Images/NES - Super Mario Bros - Items Objects and NPCs.png"
+dest_files=["res://.godot/imported/NES - Super Mario Bros - Items Objects and NPCs.png-fa5d8c2865892815e3d4369ae498a1e4.ctex"]
 
 [params]
 

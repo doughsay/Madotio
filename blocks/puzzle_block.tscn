@@ -1,17 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://8xj2vy27755l"]
+[gd_scene load_steps=11 format=3 uid="uid://8xj2vy27755l"]
 
-[ext_resource type="SpriteFrames" uid="uid://5wprl56nua3v" path="res://blocks/puzzle_block.tres" id="1_dmfbg"]
+[ext_resource type="Script" path="res://blocks/puzzle_block.gd" id="1_sr4kf"]
+[ext_resource type="Texture2D" uid="uid://oke2nf1oocyh" path="res://assets/sprite_sheets/blocks.png" id="1_yg0yx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kytp"]
-size = Vector2(16, 16)
+size = Vector2(16, 15)
 
-[node name="PuzzleBlock" type="AnimatedSprite2D"]
-texture_filter = 1
-sprite_frames = ExtResource("1_dmfbg")
-animation = &"active"
-autoplay = "active"
+[sub_resource type="Curve2D" id="Curve2D_pqtl4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cug76"]
+atlas = ExtResource("1_yg0yx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oos44"]
+atlas = ExtResource("1_yg0yx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wbuh"]
+atlas = ExtResource("1_yg0yx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfbtc"]
+atlas = ExtResource("1_yg0yx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehxlv"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_cug76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oos44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wbuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oos44")
+}],
+"loop": true,
+"name": &"active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfbtc")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftm87"]
+size = Vector2(16, 1)
+
+[node name="PuzzleBlock" type="Node2D"]
+script = ExtResource("1_sr4kf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3kytp")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_pqtl4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotation = -1.5708
+rotates = false
+loop = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_ehxlv")
+animation = &"dead"
+autoplay = "active"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_ftm87")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_hit"]

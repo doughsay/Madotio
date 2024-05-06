@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ssjlddvuq06"
-path="res://.godot/imported/items_objects_npcs.png-22472b20ed8283c6accd544a07a22b44.ctex"
+uid="uid://2o8tceqx4ok0"
+path="res://.godot/imported/NES - Super Mario Bros - Title Screen HUD and Miscellaneous.png-6a778a70b732f93e6a0959df705183d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/items_objects_npcs.png"
-dest_files=["res://.godot/imported/items_objects_npcs.png-22472b20ed8283c6accd544a07a22b44.ctex"]
+source_file="res://assets/Source Images/NES - Super Mario Bros - Title Screen HUD and Miscellaneous.png"
+dest_files=["res://.godot/imported/NES - Super Mario Bros - Title Screen HUD and Miscellaneous.png-6a778a70b732f93e6a0959df705183d8.ctex"]
 
 [params]
 

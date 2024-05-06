@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjht54foki25s"
-path="res://.godot/imported/smb_mario_sheet.png-5f5fa1c523e38913f0114576a6ad4834.ctex"
+uid="uid://dnn0e1aqjbrm2"
+path="res://.godot/imported/NES - Super Mario Bros - Tileset.png-29f5d9796c237bae6cfe472f7661e59a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_sheets/smb_mario_sheet.png"
-dest_files=["res://.godot/imported/smb_mario_sheet.png-5f5fa1c523e38913f0114576a6ad4834.ctex"]
+source_file="res://assets/Source Images/NES - Super Mario Bros - Tileset.png"
+dest_files=["res://.godot/imported/NES - Super Mario Bros - Tileset.png-29f5d9796c237bae6cfe472f7661e59a.ctex"]
 
 [params]
 
