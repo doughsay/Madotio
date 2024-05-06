@@ -26,7 +26,8 @@ height = 16.0
 script = ExtResource("1_x5tkg")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_70i85")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionCapsule" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lk8yn")

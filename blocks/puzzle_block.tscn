@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8xj2vy27755l"]
+
+[ext_resource type="SpriteFrames" uid="uid://5wprl56nua3v" path="res://blocks/puzzle_block.tres" id="1_dmfbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kytp"]
+size = Vector2(16, 16)
+
+[node name="PuzzleBlock" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = ExtResource("1_dmfbg")
+animation = &"active"
+autoplay = "active"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_3kytp")
