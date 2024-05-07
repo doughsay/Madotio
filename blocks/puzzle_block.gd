@@ -1,21 +1,16 @@
 extends Node2D
 
-enum BlockState {ALIVE, HIT, DEAD}
+enum BlockState {ACTIVE, INACTIVE}
 
-const hit_animation_speed = 10
-var state: BlockState = BlockState.ALIVE
-
-func _process(delta):
-	match state:
-		BlockState.HIT:
-			$Path2D/PathFollow2D.progress_ratio += hit_animation_speed * delta
-			
-			if $Path2D/PathFollow2D.progress_ratio >= 1.0:
-				state = BlockState.DEAD
+var state: BlockState = BlockState.ACTIVE
 
 
-func _on_hit(_body):
-	match state:
-		BlockState.ALIVE:
-			$Path2D/PathFollow2D/AnimatedSprite2D.animation = "dead"
-			state = BlockState.HIT
+func _on_hit(body: Node2D):
+	if body.is_in_group("can hit blocks"):
+		match state:
+			BlockState.ACTIVE:
+				$Path2D/PathFollow2D/AnimatedSprite2D.animation = "inactive"
+				state = BlockState.INACTIVE
+				
+				var tween = get_tree().create_tween()
+				tween.tween_property($Path2D/PathFollow2D, "progress_ratio", 1.0, 0.15).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT_IN)

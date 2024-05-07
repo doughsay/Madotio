@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oke2nf1oocyh" path="res://assets/sprite_sheets/blocks.png" id="1_yg0yx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kytp"]
-size = Vector2(16, 15)
+size = Vector2(16, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_pqtl4"]
 _data = {
@@ -52,7 +52,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_pfbtc")
 }],
 "loop": false,
-"name": &"dead",
+"name": &"inactive",
 "speed": 0.0
 }]
 
@@ -65,7 +65,6 @@ script = ExtResource("1_sr4kf")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_3kytp")
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -79,7 +78,7 @@ loop = false
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_ehxlv")
-animation = &"dead"
+animation = &"inactive"
 autoplay = "active"
 
 [node name="Area2D" type="Area2D" parent="."]

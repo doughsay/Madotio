@@ -1,32 +1,159 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbqjb18f11qrl"]
+[gd_scene load_steps=19 format=3 uid="uid://dbqjb18f11qrl"]
 
 [ext_resource type="Texture2D" uid="uid://78oopyvvko8h" path="res://assets/sprite_sheets/mario.png" id="1_1cbhk"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_x5tkg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pp2up"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap2xc"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmgp8"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n20lm"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2qwv"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xav78"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4ncd"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l6ae"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0up7d"]
 atlas = ExtResource("1_1cbhk")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7woo1"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqrv"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jadcl"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mck17"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0llk"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bydt"]
+atlas = ExtResource("1_1cbhk")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_70i85"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pp2up")
+"texture": SubResource("AtlasTexture_ap2xc")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmgp8")
+}],
+"loop": false,
+"name": &"jumping",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n20lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2qwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xav78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2qwv")
 }],
 "loop": true,
-"name": &"default",
+"name": &"running",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4ncd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l6ae")
+}],
+"loop": true,
+"name": &"sliding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0up7d")
+}],
+"loop": false,
+"name": &"standing",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7woo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jadcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mck17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0llk")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bydt")
+}],
+"loop": false,
+"name": &"turning",
+"speed": 0.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lk8yn"]
 radius = 7.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["can hit blocks"]]
 script = ExtResource("1_x5tkg")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70i85")
+animation = &"standing"
+autoplay = "standing"
 
 [node name="CollisionCapsule" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_lk8yn")
