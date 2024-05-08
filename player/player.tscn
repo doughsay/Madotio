@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dbqjb18f11qrl"]
 
-[ext_resource type="Texture2D" uid="uid://78oopyvvko8h" path="res://assets/sprite_sheets/mario.png" id="1_1cbhk"]
+[ext_resource type="Texture2D" uid="uid://78oopyvvko8h" path="res://assets/mario.png" id="1_1cbhk"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_x5tkg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap2xc"]
@@ -142,18 +142,20 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lk8yn"]
-radius = 7.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfket"]
+size = Vector2(12, 14)
 
-[node name="Player" type="CharacterBody2D" groups=["can hit blocks"]]
+[node name="Player" type="CharacterBody2D" groups=["can hit blocks", "gets coins"]]
 script = ExtResource("1_x5tkg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_70i85")
-animation = &"turning"
+animation = &"standing"
 autoplay = "standing"
 
-[node name="CollisionCapsule" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CapsuleShape2D_lk8yn")
+[node name="CollisionRectangle" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tfket")
+
+[node name="CayoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

@@ -1,0 +1,34 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://c0gl2pt0v3fo4"]
+
+[ext_resource type="PackedScene" uid="uid://dfuu2i5f87abt" path="res://objects/coin.tscn" id="1_4piw4"]
+[ext_resource type="PackedScene" uid="uid://8yro3fijrhri" path="res://objects/puzzle_block.tscn" id="1_dvqrn"]
+[ext_resource type="Texture2D" uid="uid://bhqie2xvavda1" path="res://assets/layer-3.png" id="2_xexq3"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5y46a"]
+resource_name = "Objects"
+scenes/1/scene = ExtResource("1_dvqrn")
+scenes/2/scene = ExtResource("1_4piw4")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ian"]
+texture = ExtResource("2_xexq3")
+separation = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_5y46a")
+sources/1 = SubResource("TileSetAtlasSource_d5ian")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0f4t3shgxo85"]
+
+[ext_resource type="Shader" path="res://PaletteSwap.gdshader" id="1_1h76x"]
+[ext_resource type="Texture2D" uid="uid://cr7fxrx4plou6" path="res://assets/layer-1-palette-underground.png" id="2_04hk3"]
+[ext_resource type="Texture2D" uid="uid://du6qf8f64hqkb" path="res://assets/layer-0-palette-underground.png" id="2_gh001"]
+[ext_resource type="TileSet" uid="uid://bumkyjwnwdgo3" path="res://tilesets/layer0.tres" id="3_dmq5r"]
+[ext_resource type="Texture2D" uid="uid://dsdd152wbwayp" path="res://assets/Source Images/World 1-1.png" id="4_52c8c"]
+[ext_resource type="TileSet" uid="uid://cslwssc5lkieh" path="res://tilesets/layer1.tres" id="5_7dnnj"]
+[ext_resource type="PackedScene" uid="uid://dbqjb18f11qrl" path="res://player/player.tscn" id="7_ofa5v"]
+[ext_resource type="TileSet" uid="uid://c0gl2pt0v3fo4" path="res://tilesets/layer3.tres" id="8_ax81o"]
+[ext_resource type="Texture2D" uid="uid://27n8xy2huu6v" path="res://assets/layer-3-palette-underground.png" id="8_uib13"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6k01"]
+shader = ExtResource("1_1h76x")
+shader_parameter/skip_first_row = true
+shader_parameter/use_palette_alpha = false
+shader_parameter/fps = 0.0
+shader_parameter/palette = ExtResource("2_gh001")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bgrt"]
+shader = ExtResource("1_1h76x")
+shader_parameter/skip_first_row = true
+shader_parameter/use_palette_alpha = false
+shader_parameter/fps = 0.0
+shader_parameter/palette = ExtResource("2_04hk3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3usb"]
+shader = ExtResource("1_1h76x")
+shader_parameter/skip_first_row = true
+shader_parameter/use_palette_alpha = false
+shader_parameter/fps = 0.0
+shader_parameter/palette = ExtResource("8_uib13")
+
+[node name="World1-1Underground" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 232.0
+color = Color(0, 0, 0, 1)
+
+[node name="Reference" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.196078)
+position = Vector2(920, -8)
+texture = ExtResource("4_52c8c")
+
+[node name="Layer0" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_y6k01")
+position = Vector2(0, 8)
+tile_set = ExtResource("3_dmq5r")
+format = 2
+layer_0/tile_data = PackedInt32Array(65551, 458752, 1, 131087, 458752, 1, 196623, 458752, 1, 262159, 458752, 1, 327695, 458752, 1, 393231, 458752, 1, 458767, 458752, 1, 524303, 458752, 1, 589839, 458752, 1, 655375, 458752, 2, 720911, 458752, 3, 655374, 393216, 2, 720910, 393216, 3, 655373, 327680, 2, 720909, 327680, 3)
+
+[node name="Layer1" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_3bgrt")
+position = Vector2(0, 8)
+tile_set = ExtResource("5_7dnnj")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 131072, 0, 131072, 131072, 0, 196608, 131072, 0, 262144, 131072, 0, 327680, 131072, 0, 393216, 131072, 0, 458752, 131072, 0, 524288, 131072, 0, 589824, 131072, 0, 655360, 131072, 0, 589834, 131072, 0, 589833, 131072, 0, 589832, 131072, 0, 589831, 131072, 0, 589830, 131072, 0, 589829, 131072, 0, 589828, 131072, 0, 655364, 131072, 0, 655365, 131072, 0, 655366, 131072, 0, 655367, 131072, 0, 655368, 131072, 0, 655369, 131072, 0, 655370, 131072, 0, 786432, 0, 0, 786433, 0, 0, 786447, 0, 0, 786446, 0, 0, 786445, 0, 0, 786444, 0, 0, 786443, 0, 0, 786442, 0, 0, 786441, 0, 0, 786440, 0, 0, 786439, 0, 0, 786438, 0, 0, 786437, 0, 0, 786436, 0, 0, 786435, 0, 0, 786434, 0, 0, 65540, 131072, 0, 65541, 131072, 0, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 0, 65545, 131072, 0, 65546, 131072, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 720900, 131072, 0, 720901, 131072, 0, 720902, 131072, 0, 720903, 131072, 0, 720904, 131072, 0, 720905, 131072, 0, 720906, 131072, 0, 720896, 131072, 0)
+
+[node name="Layer3" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_g3usb")
+position = Vector2(0, 8)
+tile_set = ExtResource("8_ax81o")
+format = 2
+layer_0/tile_data = PackedInt32Array(524292, 0, 131072, 524293, 0, 131072, 524294, 0, 131072, 524295, 0, 131072, 524296, 0, 131072, 524297, 0, 131072, 524298, 0, 131072, 393226, 0, 131072, 393225, 0, 131072, 393224, 0, 131072, 393223, 0, 131072, 393222, 0, 131072, 393221, 0, 131072, 393220, 0, 131072, 262149, 0, 131072, 262150, 0, 131072, 262151, 0, 131072, 262152, 0, 131072, 262153, 0, 131072)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
+
+[node name="Player" parent="." instance=ExtResource("7_ofa5v")]
+position = Vector2(40, 32)

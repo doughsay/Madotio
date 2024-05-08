@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://8yro3fijrhri"]
+
+[ext_resource type="Script" path="res://objects/puzzle_block.gd" id="1_a4ss6"]
+[ext_resource type="Texture2D" uid="uid://bhqie2xvavda1" path="res://assets/layer-3.png" id="2_au2sj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sks3j"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_56m0p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6qsh"]
+atlas = ExtResource("2_au2sj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh3p8"]
+atlas = ExtResource("2_au2sj")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l11a4"]
+atlas = ExtResource("2_au2sj")
+region = Rect2(34, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmq1n"]
+atlas = ExtResource("2_au2sj")
+region = Rect2(51, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fp2p5"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_i6qsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh3p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l11a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh3p8")
+}],
+"loop": true,
+"name": &"active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmq1n")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_488pl"]
+size = Vector2(16, 1)
+
+[node name="PuzzleBlock" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_a4ss6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_sks3j")
+
+[node name="Path2D" type="Path2D" parent="."]
+use_parent_material = true
+curve = SubResource("Curve2D_56m0p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+use_parent_material = true
+rotation = -1.5708
+rotates = false
+loop = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+use_parent_material = true
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_fp2p5")
+animation = &"active"
+autoplay = "active"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_488pl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_hit"]
