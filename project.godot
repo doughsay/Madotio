@@ -13,7 +13,6 @@ config_version=5
 config/name="Madotio"
 run/main_scene="res://levels/world-1-1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
 
 [display]
 

@@ -145,7 +145,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfket"]
 size = Vector2(12, 14)
 
-[node name="Player" type="CharacterBody2D" groups=["can hit blocks", "gets coins"]]
+[node name="Player" type="CharacterBody2D" groups=["can hit blocks", "gets coins", "gets powerups"]]
+collision_layer = 2
 script = ExtResource("1_x5tkg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
