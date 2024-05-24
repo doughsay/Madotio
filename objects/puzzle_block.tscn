@@ -28,21 +28,21 @@ region = Rect2(51, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_fp2p5"]
 animations = [{
 "frames": [{
-"duration": 5.0,
+"duration": 24.0,
 "texture": SubResource("AtlasTexture_i6qsh")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": SubResource("AtlasTexture_uh3p8")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": SubResource("AtlasTexture_l11a4")
 }, {
-"duration": 1.0,
+"duration": 8.0,
 "texture": SubResource("AtlasTexture_uh3p8")
 }],
 "loop": true,
 "name": &"active",
-"speed": 10.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,7 +57,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_488pl"]
-size = Vector2(16, 1)
+size = Vector2(14, 1)
 
 [node name="PuzzleBlock" type="Node2D"]
 use_parent_material = true
@@ -69,13 +69,11 @@ curve = SubResource("Curve2D_56m0p")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 use_parent_material = true
-rotation = -1.5708
 rotates = false
 loop = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
 use_parent_material = true
-rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_fp2p5")
 animation = &"active"
 autoplay = "active"
@@ -91,7 +89,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 8.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_488pl")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_hit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dbqjb18f11qrl"]
+[gd_scene load_steps=38 format=3 uid="uid://dbqjb18f11qrl"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_x5tkg"]
 [ext_resource type="Texture2D" uid="uid://xvasml3bv3vy" path="res://assets/mario.png" id="3_kpb0l"]
@@ -386,11 +386,18 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6sl6o"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwaiq"]
+size = Vector2(1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfket"]
-size = Vector2(14, 14)
+size = Vector2(12, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsc73"]
-size = Vector2(14, 30)
+size = Vector2(12, 30)
 
 [node name="Player" type="CharacterBody2D" groups=["can hit blocks", "gets coins", "gets powerups"]]
 collision_layer = 2
@@ -399,13 +406,29 @@ script = ExtResource("1_x5tkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_0fxdo")
-animation = &"big_jumping"
+animation = &"growing"
 autoplay = "small_standing"
 
+[node name="SmallCollisionPill" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6sl6o")
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -7, -6, 0, 0, 7, 6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_qwaiq")
+
 [node name="SmallCollisionRectangle" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_tfket")
 
 [node name="BigCollisionRectangle" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_xsc73")
 disabled = true
@@ -417,4 +440,9 @@ one_shot = true
 [node name="GrowTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="RunTimer" type="Timer" parent="."]
+wait_time = 0.167
+one_shot = true
+
 [connection signal="timeout" from="GrowTimer" to="." method="_on_grow_timer_timeout"]
+[connection signal="timeout" from="RunTimer" to="." method="_on_run_timer_timeout"]

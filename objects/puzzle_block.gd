@@ -7,9 +7,10 @@ var state: BlockState = BlockState.ACTIVE
 var coin_scene = preload("res://objects/block_coin.tscn")
 
 func _on_hit(body: Node2D):
-	if body.is_in_group("can hit blocks"):
+	if body.is_in_group("can hit blocks") and !body.hit_block:
 		match state:
 			BlockState.ACTIVE:
+				body.hit_block = true
 				var coin = coin_scene.instantiate()
 				$".".call_deferred("add_child", coin)
 				$".".call_deferred("move_child", coin, 0)
